@@ -1,5 +1,5 @@
 {
-  "name": "node-voxel-worlgen",
+  "name": "voxel-worldgen",
   "version": "1.0.0",
   "description": "A voxel world generator written in Rust, with bindings for JavaScript",
   "main": "lib/index.js",

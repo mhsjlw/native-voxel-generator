@@ -35,15 +35,6 @@ fn generate_chunk(call: Call) -> JsResult<JsBuffer> {
       try!(data.set(i as u32, JsInteger::new(scope, *v as i32)));
   }
 
-  //let object: Handle<JsObject> = JsObject::new(scope);
-
-  //try!(object.set("data", chunk.data));
-  //try!(object.set("size", chunk.size));
-
-  // try!(object.set("seed", seed));
-  // try!(object.set("x", x));
-  // try!(object.set("y", y));
-
   Ok(data)
 }
 

@@ -1,11 +1,11 @@
 [package]
-name = "node-voxel-worlgen"
+name = "node-voxel-worldgen"
 version = "1.0.0"
 authors = ["mhsjlw <mhsjlw@aol.com>"]
 license = "MIT"
 
 [lib]
-name = "node_voxel_worlgen"
+name = "node_voxel_worldgen"
 crate-type = ["dylib"]
 
 [dependencies]
