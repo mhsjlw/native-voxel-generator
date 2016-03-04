@@ -6,31 +6,36 @@ extern crate nalgebra;
 extern crate noise;
 
 use voxel_worldgen::generators;
-use voxel_worldgen::simplex_normalized::normalize_simplex;
+use voxel_worldgen::rnd::RngBuilder;
 
-use noise::{Seed, open_simplex2};
-use voxel_worldgen::rnd::{ OctavesSeed, simplex3_octaves };
-use rand::{ XorShiftRng, StdRng };
-use nalgebra::{ Vec2, Pnt2 };
+use nalgebra::Pnt2;
 
-use neon::vm::{Call, JsResult, Module};
-use neon::js::{JsInteger, JsString, JsObject, JsBuffer};
+use neon::vm::{Call, JsResult};
+use neon::js::{JsInteger, JsObject};
+use neon::js::binary::{ JsBuffer };
 use neon::mem::Handle;
-use neon::js::{Value, Object};
+use neon::js::Object;
 
-fn generate_chunk(call: Call) -> JsResult<JsObject> {
+fn generate_chunk(call: Call) -> JsResult<JsBuffer> {
   let scope = call.scope;
-  let object: Handle<JsObject> = JsObject::new(scope);
-  let data: Handle<JsBuffer> = JsBuffer::new(scope);
 
-  let seed = try!(try!(call.arguments.require(scope, 0)).check::<JsInteger>());
+  let seed = try!(try!(call.arguments.require(scope, 0)).check::<JsInteger>()).value();
+  let mut seed_rng = RngBuilder::init().mix(seed as u64).build();
+  let world_gen_state = generators::vanilla::WorldGeneratorState::new(&mut seed_rng);
+
   let x = try!(try!(call.arguments.require(scope, 1)).check::<JsInteger>());
   let y = try!(try!(call.arguments.require(scope, 2)).check::<JsInteger>());
+  let chunk_pos = Pnt2::new(x.value() as i32, y.value() as i32);
 
-  let world_gen_state = generators::vanilla::WorldGeneratorState::new(&mut seed);
-  let chunk = generators::vanilla::generate_chunk(&world_gen_state, Pnt2::new(x, y));
+  let chunk = generators::vanilla::generate_chunk(&world_gen_state, chunk_pos);
 
-  let data: Handle<JsBuffer> = JsBuffer::new(scope, chunk.data.size());
+  let data: Handle<JsBuffer> = try!(JsBuffer::new(scope, chunk.data.len() as u32));
+
+  for (i, v) in chunk.data.iter().enumerate() {
+      try!(data.set(i as u32, JsInteger::new(scope, *v as i32)));
+  }
+
+  //let object: Handle<JsObject> = JsObject::new(scope);
 
   //try!(object.set("data", chunk.data));
   //try!(object.set("size", chunk.size));
@@ -39,7 +44,7 @@ fn generate_chunk(call: Call) -> JsResult<JsObject> {
   // try!(object.set("x", x));
   // try!(object.set("y", y));
 
-  Ok(object)
+  Ok(data)
 }
 
 register_module!(m, {
