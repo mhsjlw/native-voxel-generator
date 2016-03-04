@@ -1,0 +1,18 @@
+{
+  "name": "node-voxel-worlgen",
+  "version": "1.0.0",
+  "description": "A voxel world generator written in Rust, with bindings for JavaScript",
+  "main": "lib/index.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/mhsjlw/node-voxel-worldgen"
+  },
+  "author": "mhsjlw <mhsjlw@aol.com>",
+  "license": "MIT",
+  "dependencies": {
+    "neon-cli": "^0.1.7"
+  },
+  "scripts": {
+    "install": "neon build"
+  }
+}

@@ -1,0 +1,16 @@
+[package]
+name = "node-voxel-worlgen"
+version = "1.0.0"
+authors = ["mhsjlw <mhsjlw@aol.com>"]
+license = "MIT"
+
+[lib]
+name = "node_voxel_worlgen"
+crate-type = ["dylib"]
+
+[dependencies]
+neon = "0.1"
+voxel_worldgen = { git = "https://github.com/hansihe/voxel_worldgen.git" }
+nalgebra = "0.5.1"
+noise = "0.1.5"
+rand = "0.3.14"

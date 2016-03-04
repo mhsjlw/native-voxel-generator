@@ -1,0 +1,6 @@
+native/target
+native/index.node
+**/*~
+**/node_modules
+**/npm-debug.log
+**/.DS_Store
