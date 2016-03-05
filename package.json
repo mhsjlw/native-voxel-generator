@@ -2,10 +2,10 @@
   "name": "voxel-worldgen",
   "version": "1.0.0",
   "description": "A voxel world generator written in Rust, with bindings for JavaScript",
-  "main": "lib/index.js",
+  "main": "index.js",
   "repository": {
     "type": "git",
-    "url": "https://github.com/mhsjlw/node-voxel-worldgen"
+    "url": "git+https://github.com/mhsjlw/node-voxel-worldgen.git"
   },
   "author": "mhsjlw <mhsjlw@aol.com>",
   "license": "MIT",
@@ -23,5 +23,9 @@
     "prismarine-world": "^1.0.1",
     "require-self": "^0.1.0",
     "vec3": "^0.1.3"
-  }
+  },
+  "bugs": {
+    "url": "https://github.com/mhsjlw/node-voxel-worldgen/issues"
+  },
+  "homepage": "https://github.com/mhsjlw/node-voxel-worldgen#readme"
 }
