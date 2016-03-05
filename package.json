@@ -10,9 +10,18 @@
   "author": "mhsjlw <mhsjlw@aol.com>",
   "license": "MIT",
   "dependencies": {
-    "neon-cli": "^0.1.7"
+    "neon-cli": "^0.1.7",
+    "prismarine-block": "^1.0.0",
+    "prismarine-chunk": "^1.0.1",
+    "minecraft-data": "^1.2.5"
   },
   "scripts": {
-    "install": "neon build"
+    "install": "neon build",
+    "prepublish": "require-self"
+  },
+  "devDependencies": {
+    "prismarine-world": "^1.0.1",
+    "require-self": "^0.1.0",
+    "vec3": "^0.1.3"
   }
 }
