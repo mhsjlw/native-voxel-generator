@@ -2,7 +2,6 @@ node-voxel-worldgen
 ===================
 
 [![NPM version](https://badge.fury.io/js/voxel-worldgen.svg)](http://badge.fury.io/js/voxel-worldgen)
-[![Build Status](https://img.shields.io/circleci/project/mhsjlw/voxel-worldgen/master.svg)](https://circleci.com/gh/mhsjlw/voxel-worldgen)
 
 A voxel world generator written in Rust, with bindings for JavaScript
 
