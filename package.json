@@ -1,6 +1,6 @@
 {
   "name": "voxel-worldgen",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "A voxel world generator written in Rust, with bindings for JavaScript",
   "main": "index.js",
   "repository": {
