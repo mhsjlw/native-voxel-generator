@@ -10,7 +10,7 @@ crate-type = ["dylib"]
 
 [dependencies]
 neon = "0.1"
-voxel_worldgen = { git = "https://github.com/hansihe/voxel_worldgen.git" }
+voxel_worldgen = "^0.1"
 nalgebra = "0.5.1"
 noise = "0.1.5"
 rand = "0.3.14"
