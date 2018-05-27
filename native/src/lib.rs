@@ -16,7 +16,7 @@ use neon::js::binary::{ JsBuffer };
 use neon::mem::Handle;
 use neon::js::Object;
 
-fn generate_chunk(call: Call) -> JsResult<JsBuffer> {
+fn js_generate_chunk(call: Call) -> JsResult<JsBuffer> {
   let scope = call.scope;
 
   let seed = try!(try!(call.arguments.require(scope, 0)).check::<JsInteger>()).value();
@@ -39,5 +39,5 @@ fn generate_chunk(call: Call) -> JsResult<JsBuffer> {
 }
 
 register_module!(m, {
-    m.export("generate_chunk", generate_chunk)
+    m.export("nativeGenerateChunk", js_generate_chunk)
 });
