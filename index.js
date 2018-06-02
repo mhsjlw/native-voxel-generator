@@ -1,25 +1,21 @@
-'use strict';
+const { nativeGenerateChunk } = require('./native/index')
+const Vec3 = require('vec3')
 
-var addon = require('./native/index');
+module.exports = function ({ version, seed }) {
+  const Chunk = require('prismarine-chunk')(version)
+  const Block = require('prismarine-block')(version)
 
-const Chunk = require('prismarine-chunk')("1.8");
-const Block = require('prismarine-block')("1.8");
+  return function (chunkX, chunkZ) {
+    const fromBlocks = nativeGenerateChunk(seed, chunkX, chunkZ)
+    const chunk = new Chunk()
 
-module.exports=function(options) {
-  const seed=options.seed;
+    chunk.initialize((x, y, z, n) => {
+      const block = new Block(fromBlocks[n], 0, 0)
+      chunk.setSkyLight(new Vec3(x, y, z), 15)
+      block.skyLight = 15
+      return block
+    })
 
-  function generateChunk(chunkX, chunkZ) {
-
-    const fromBlocks=addon.generate_chunk(seed, chunkX, chunkZ);
-
-    const chunk = new Chunk();
-
-    chunk.initialize((x,y,z,n)=> {
-      const block=new Block(fromBlocks[n],0,0);
-      block.skyLight=15;
-      return block;
-    });
-    return chunk;
+    return chunk
   }
-  return generateChunk;
-};
+}
