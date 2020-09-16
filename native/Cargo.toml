@@ -9,8 +9,8 @@ name = "worldgen"
 crate-type = [ "dylib" ]
 
 [dependencies]
-neon = "0.1"
+neon = "0.4"
 voxel_worldgen = "0.1"
-nalgebra = "0.5"
-noise = "0.5"
-rand = "0.4"
+nalgebra = "0.18"
+noise = "0.5.1"
+rand = "0.7.3"
