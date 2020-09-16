@@ -9,6 +9,8 @@ A voxel world generator written in Rust, with bindings for JavaScript
 You'll need [rust](https://www.rust-lang.org/) installed to compile the package. Once you've gotten it installed, just
 
     npm install voxel-worldgen
+
+**Note:** If the program doesn't compile, try to build it with root/administrator permissions.
     
 Then, if you are using it with flying-squid, simply add voxel-worldgen as the generator inside the `settings.json`!
 
